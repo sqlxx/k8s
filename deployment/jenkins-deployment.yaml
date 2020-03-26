@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  labels:
+    app: jenkins
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - image: registry.cn-hangzhou.aliyuncs.com/sqlxx/jenkins:v1
+          name: jenkins-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+            - containerPort: 50000
+          volumeMounts:
+            - name: jenkins-persistentstorage
+              mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-persistentstorage
+          persistentVolumeClaim:
+            claimName: jenkins-pvclaim
+            
