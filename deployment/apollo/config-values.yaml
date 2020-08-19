@@ -1,0 +1,11 @@
+configdb:
+  host: 192.168.95.142
+  userName: root
+  password: Maycur@2017
+  service:
+    enabled: false
+configService:
+  replicaCount: 1
+adminService:
+  replicaCount: 1
+

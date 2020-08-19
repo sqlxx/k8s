@@ -1,0 +1,15 @@
+portaldb:
+  host: 192.168.95.142
+  userName: root
+  password: Maycur@2017
+  service:
+    enabled: false
+config:
+  envs: dev
+  metaServers:
+    dev: http://apollo-service-dev-apollo-configservice:8080
+replicaCount: 1
+service:
+  type: ClusterIP
+
+
